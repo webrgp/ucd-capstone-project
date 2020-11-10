@@ -14,27 +14,27 @@ const s3 = new XAWS.S3({
   signatureVersion: 'v4'
 })
 
-const bucketName = process.env.TODO_IMAGES_S3_BUCKET
+const bucketName = process.env.IMAGES_S3_BUCKET
 const urlExpiration = process.env.SIGNED_URL_EXPIRATION
 
 export const handler = middy(
   async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
-    const todoId = event.pathParameters.todoId
+    const imageId = event.pathParameters.imageId
 
-    if (!todoId) {
+    if (!imageId) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ error: 'Missing todoId' })
+        body: JSON.stringify({ error: 'Missing imageId' })
       }
     }
 
     logger.info(
-      `Received request for generating signed URL for todo item ${todoId}`
+      `Received request for generating signed URL for image ${imageId}`
     )
 
-    logger.info('Geting signed URL for todo...')
+    logger.info('Geting signed URL for image...')
 
-    const url = getUploadUrl(todoId)
+    const url = getUploadUrl(imageId)
 
     return {
       statusCode: 200,
@@ -51,10 +51,10 @@ handler.use(
   })
 )
 
-function getUploadUrl(todoId: string) {
+function getUploadUrl(imageId: string) {
   return s3.getSignedUrl('putObject', {
     Bucket: bucketName,
-    Key: todoId,
+    Key: imageId,
     Expires: urlExpiration
   })
 }
