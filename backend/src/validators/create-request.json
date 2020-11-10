@@ -3,13 +3,10 @@
   "title": "create",
   "type": "object",
   "properties": {
-    "name": {
-      "type": "string"
-    },
-    "dueDate": {
+    "description": {
       "type": "string"
     }
   },
-  "required": ["name"],
+  "required": ["description"],
   "additionalProperties": false
 }

@@ -1,18 +1,12 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "update",
+  "title": "create",
   "type": "object",
   "properties": {
-    "name": {
+    "description": {
       "type": "string"
-    },
-    "dueDate": {
-      "type": "string"
-    },
-    "done": {
-      "type": "boolean"
     }
   },
-  "required": ["name"],
+  "required": ["description"],
   "additionalProperties": false
 }
