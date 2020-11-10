@@ -45,7 +45,7 @@ functions:
     handler: src/lambda/auth/auth0Authorizer.handler
 
   GetImages:
-    handler: src/lambda/http/getImage.handler
+    handler: src/lambda/http/getImages.handler
     events:
       - http:
           method: get

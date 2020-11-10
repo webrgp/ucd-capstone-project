@@ -3,7 +3,7 @@ import * as middy from 'middy'
 import { cors } from 'middy/middlewares'
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda'
 import { getUserId } from '../utils'
-import { getTodos } from '../../businessLogic/todos'
+import { getImages } from '../../businessLogic/images'
 import { createLogger } from '../../utils/logger'
 
 const logger = createLogger('auth')
@@ -13,10 +13,10 @@ export const handler = middy(
     const userId = getUserId(event)
 
     logger.info(
-      `Received request for getting all todo items for user ${userId}...`
+      `Received request for getting all images for user ${userId}...`
     )
 
-    const items = await getTodos(userId)
+    const items = await getImages(userId)
 
     return {
       statusCode: 200,
