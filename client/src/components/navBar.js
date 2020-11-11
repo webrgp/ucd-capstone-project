@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-
+import { login, logout, isAuthenticated } from "../utils/auth"
 import { Navbar, Nav } from "react-bootstrap"
 
 const CustomNavbar = () => {
@@ -11,19 +11,44 @@ const CustomNavbar = () => {
       </Link>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
-          <Link to="/page-2" className="link-no-style">
-            <Nav.Link as="span" eventKey="page-2">
-              Page 2
-            </Nav.Link>
-          </Link>
-        </Nav>
+
+        { isAuthenticated() && (
+          <Nav className="mr-auto">
+            <Link to="/me" className="link-no-style">
+              <Nav.Link as="span" eventKey="me">
+                Photos
+              </Nav.Link>
+            </Link>
+            <Link to="/me/profile" className="link-no-style">
+              <Nav.Link as="span" eventKey="profile">
+                Profile
+              </Nav.Link>
+            </Link>
+          </Nav>
+        )}
+
         <Nav className="ml-auto">
-          <Link to="/account" className="link-no-style">
-            <Nav.Link as="span" eventKey="account">
-              Account
-            </Nav.Link>
-          </Link>
+          {
+            isAuthenticated()
+            ? <button
+                className="btn btn-outline-primary"
+                onClick={e => {
+                  logout()
+                  e.preventDefault()
+                }}
+              >
+                Logout
+              </button>
+            : <button
+                className="btn btn-outline-primary"
+                onClick={e => {
+                  login()
+                  e.preventDefault()
+                }}
+              >
+                Login
+              </button>
+          }
         </Nav>
       </Navbar.Collapse>
     </Navbar>

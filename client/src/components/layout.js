@@ -28,9 +28,9 @@ const Layout = ({ children, pageInfo }) => (
         <Col className="footer-col">
           <footer>
             <span>
-              © {new Date().getFullYear()}, Built with
+              Built by
               {` `}
-              <a href="https://www.gatsbyjs.org">Gatsby</a>
+              <a href="https://github.com/webrgp">Rodrigo Passos</a>
             </span>
           </footer>
         </Col>

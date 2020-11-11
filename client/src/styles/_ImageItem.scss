@@ -1,0 +1,14 @@
+.ImageItem {
+  .card-img-overlay {
+    // opacity: 0;
+
+    background: rgba(#000, .65);
+    color: #fff;
+
+    transition: opacity .25s ease;
+
+    &:hover, &:focus {
+      opacity: 1;
+    }
+  }
+}
