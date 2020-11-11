@@ -23,7 +23,7 @@ export const handler = middy(
     }
 
     logger.info(
-      `Received request for updating todo item ${imageId} of user ${userId}...`
+      `Received request for updating image ${imageId} of user ${userId}...`
     )
 
     await updateImage(userId, imageId, updatedImage)
