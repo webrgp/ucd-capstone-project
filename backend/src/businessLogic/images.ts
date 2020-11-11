@@ -9,6 +9,8 @@ const logger = createLogger('auth')
 
 const imageAccess = new ImageAccess()
 
+const bucketName = process.env.IMAGES_S3_BUCKET
+
 export async function createImage(createImageRequest: CreateImageRequest, userId: string): Promise<ImageItem> {
   logger.info('Generating uuid...')
   const imageId = uuid.v4()
@@ -17,6 +19,7 @@ export async function createImage(createImageRequest: CreateImageRequest, userId
     imageId,
     userId,
     createdAt: new Date().toISOString(),
+    imageUrl: `https://${bucketName}.s3.amazonaws.com/${imageId}`,
     ...createImageRequest,
   })
 }
