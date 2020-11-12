@@ -1,6 +1,9 @@
 .ImageInput {
   margin: 1rem 0;
   &--upload-button {
-    text-align: right;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 }

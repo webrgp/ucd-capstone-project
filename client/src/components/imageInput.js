@@ -26,12 +26,14 @@ const ImageInput = ({onImageCreate}) => {
   const handleSave = (event) => {
     event.preventDefault()
     onImageCreate(imageState)
+    setImageState(defaultImageState)
   }
 
   return (
     <div className="ImageInput">
       <Form>
         <div className="ImageInput--upload-button" hidden={ imageState.file !== null } >
+          <h1>My Photos</h1>
           <Button onClick={(event) => {
             event.preventDefault();
             fileInputRef.current.click()

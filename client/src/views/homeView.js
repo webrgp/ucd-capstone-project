@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Alert, Container, Row, Col } from "react-bootstrap"
+import { Alert, CardColumns, Container, Row, Col } from "react-bootstrap"
 
 import { Store } from '../store'
 import {
@@ -99,12 +99,14 @@ const HomeView = ({user}) => {
       <Row>
         {
           state && state.length > 0
-          ? state.map( image => <ImageItem
-              key={image.imageId}
-              image={image}
-              onDeleteImage={onDeleteImage}
-              onUpdateImage={onUpdateImage}
-            />)
+          ? <CardColumns>
+              {state.map( image => <ImageItem
+                key={image.imageId}
+                image={image}
+                onDeleteImage={onDeleteImage}
+                onUpdateImage={onUpdateImage}
+              />)}
+            </CardColumns>
           : <Col>
               <Alert variant='info' className='text-center'>
                 You have no Images
