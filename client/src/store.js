@@ -12,7 +12,7 @@ const reducer = (state, action) => {
       return action.value
 
     case 'ADD_IMAGE':
-      return [...state, action.value]
+      return [ action.value, ...state]
 
     case 'DELETE_IMAGE':
       const deleted = action.value

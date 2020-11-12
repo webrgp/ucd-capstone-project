@@ -17,8 +17,6 @@ const HomeView = ({user}) => {
 
   const { state, dispatch } = React.useContext(Store);
 
-  console.log('state:',state);
-
   useEffect(() => {
     fetchImages()
   }, []);
@@ -26,9 +24,13 @@ const HomeView = ({user}) => {
   const fetchImages = async () => {
     try {
       const result = await getImages(user.token)
+      const sorted = result.sort( (a, b) =>
+        (new Date(a.createdAt) < new Date(b.createdAt)) ? 1 : -1
+      )
+      console.log(sorted);
       dispatch({
         type: 'FETCH_IMAGES',
-        value: result
+        value: sorted
       });
     } catch (e) {
       alert(`Failed to fetch todos: ${e.message}`)
