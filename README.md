@@ -2,7 +2,7 @@
 
 Serverless picture organizer application where a user can manage pictures and captions.
 
-![screen capture](docs/screen-grab.gif)
+![screen capture](https://github.com/webrgp/ucd-capstone-project/raw/master/doc/screen-grab.gif)
 
 
 ## Functionality
